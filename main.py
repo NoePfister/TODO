@@ -56,13 +56,23 @@ class Program:
 
     def new(self):
         cls()
+        if self.tasks.__len__() >= 100:
+            print("You can't have more than 100 tasks")
+            input("Press enter to continue")
+            return
         self.tasks.append(input("Enter a new task: ") + "\n")
         self.save()
 
     def delete(self):
         cls()
+
         for i in range(self.tasks.__len__()):
             print(f"{i + 1}. {self.tasks[i]}"[:-1])
+        if int(input("Enter the number of the task to delete: ")) > self.tasks.__len__():
+            cls()
+            print("Invalid number")
+            input("Press enter to continue")
+            return
         self.tasks.pop(int(input("Enter the number of the task to delete: ")) - 1)
         self.save()
 
