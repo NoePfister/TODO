@@ -68,13 +68,13 @@ class Program:
 
         for i in range(self.tasks.__len__()):
             print(f"{i + 1}. {self.tasks[i]}"[:-1])
-        input = input("Enter the number of the task to delete: ")
-        if int(input) > self.tasks.__len__():
+        input_int = int(input("Enter the number of the task to delete: "))
+        if int(input_int) > self.tasks.__len__():
             cls()
             print("Invalid number")
-            input("Press enter to continue")
+            input_int("Press enter to continue")
             return
-        self.tasks.pop(input)
+        self.tasks.pop(input_int - 1)
         self.save()
 
 
